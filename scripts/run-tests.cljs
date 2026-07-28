@@ -12,10 +12,11 @@
 (ns run-tests
   (:require [cljs.test :as t]
             [custody.model-test]
-            [custody.shamir-test]))
+            [custody.shamir-test]
+            [custody.seal-test]))
 
 (defmethod t/report [::t/default :end-run-tests] [m]
   (when-not (t/successful? m)
     (js/process.exit 1)))
 
-(t/run-tests 'custody.shamir-test 'custody.model-test)
+(t/run-tests 'custody.shamir-test 'custody.model-test 'custody.seal-test)
