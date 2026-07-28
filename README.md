@@ -100,7 +100,7 @@ Replaces the `kotoba-custody` Rust crate cited by ADR-2607061900, removed with
 the rest of the Rust tree (ADR-2607072000). The `GrantedShare` shape that ADR
 described — epoch, deal binding, per-requester re-wrap — is what `share-aad`
 and `quorum-error` reconstruct in `.cljc`. Consumed by the cloud-itonami
-sealed plane (ADR-2607279500).
+sealed plane (ADR-2607285000).
 
 ```bash
 clojure -M:test                              # JVM

@@ -28,7 +28,7 @@
   crypto, it names the AAD that wrap must bind (`share-aad`) and refuses
   quorums that disagree about which deal and which epoch they belong to.
 
-  Sits under ADR-2607279500 (cloud-itonami sealed plane). It replaces the
+  Sits under ADR-2607285000 (cloud-itonami sealed plane). It replaces the
   `kotoba-custody` Rust crate that ADR-2607061900 cited, which was removed
   with the rest of the Rust tree (ADR-2607072000); the `GrantedShare` shape
   it describes — epoch, deal binding, per-requester re-wrap — is what
