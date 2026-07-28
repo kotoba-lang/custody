@@ -206,6 +206,20 @@
       (< (count releases) threshold) :below-threshold
       :else nil)))
 
+(defn verify-secret
+  "Compare a reconstructed secret against the deal's digest.
+
+  Split out of `open` because the digest is async on the runtimes that have
+  a real one (Web Crypto has no synchronous SHA-256), so `custody.seal`
+  computes it, awaits it, and calls this — rather than reimplementing the
+  comparison and drifting from it."
+  [d secret digest]
+  (if (= digest (:deal/secret-digest d))
+    {:custody/opened? true :custody/secret secret}
+    {:custody/opened? false
+     :custody/reason :digest-mismatch
+     :custody/computed-digest digest}))
+
 (defn open
   "Reconstruct the secret from `releases`, verifying the result against the
   deal's digest.
@@ -224,13 +238,8 @@
     (throw (ex-info "invalid custody deal" {:custody/error e})))
   (if-let [e (quorum-error d releases)]
     {:custody/opened? false :custody/reason e}
-    (let [secret (shamir/combine (mapv :release/share releases))
-          digest (digest-fn secret)]
-      (if (= digest (:deal/secret-digest d))
-        {:custody/opened? true :custody/secret secret}
-        {:custody/opened? false
-         :custody/reason :digest-mismatch
-         :custody/computed-digest digest}))))
+    (let [secret (shamir/combine (mapv :release/share releases))]
+      (verify-secret d secret (digest-fn secret)))))
 
 ;; --------------------------------------------------------------- rotation
 
