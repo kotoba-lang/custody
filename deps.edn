@@ -1,0 +1,8 @@
+{:paths ["src"]
+ ;; Pure .cljc, no runtime deps. The randomness and the digest are injected
+ ;; (see custody.shamir/split and custody.model/open) precisely so this
+ ;; library never has to pick a CSPRNG or a hash on a caller's behalf.
+ :aliases {:test {:extra-paths ["test"]
+                  :extra-deps {io.github.cognitect-labs/test-runner
+                               {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
+                  :main-opts ["-m" "cognitect.test-runner"]}}}
