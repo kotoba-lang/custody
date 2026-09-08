@@ -33,7 +33,7 @@
   with the rest of the Rust tree (ADR-2607072000); the `GrantedShare` shape
   it describes — epoch, deal binding, per-requester re-wrap — is what
   `share-aad` and `quorum-error` reconstruct in cljc."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [custody.shamir :as shamir]))
 
 (def version 1)
