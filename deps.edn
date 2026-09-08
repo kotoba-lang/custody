@@ -1,4 +1,9 @@
 {:paths ["src"]
+ :deps {
+        ;; kotoba.lang.text, not clojure.string. Pinned as an explicit floor:
+        ;; tools.deps takes the NEWEST sha it is shown, so without a floor here
+        ;; this repo silently rides whatever a sibling happens to name.
+        io.github.kotoba-lang/text {:git/sha "73bdb13ae7a3d004b44bca08be03a3191157a38f"}}
  ;; Pure .cljc, no runtime deps. The randomness and the digest are injected
  ;; (see custody.shamir/split and custody.model/open) precisely so this
  ;; library never has to pick a CSPRNG or a hash on a caller's behalf.
