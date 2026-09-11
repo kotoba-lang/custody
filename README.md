@@ -143,7 +143,7 @@ and `quorum-error` reconstruct in `.cljc`. Consumed by the cloud-itonami
 sealed plane (ADR-2607285000).
 
 ```bash
-clojure -M:test        # JVM: the pure half, 22 tests / 83 assertions
+kbb -M:test        # JVM: the pure half, 22 tests / 83 assertions
 npm install && npm test # nbb: adds custody.seal, 28 / 103 with real Web Crypto
 ```
 
