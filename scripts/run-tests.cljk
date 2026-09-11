@@ -1,6 +1,6 @@
 ;; nbb test runner (ADR-2607173000: nbb is the script host; no bb).
 ;;
-;;   nbb --classpath "src:test" scripts/run-tests.cljs
+;;   nbb --classpath "src:test" scripts/run-tests.cljk
 ;;
 ;; Same suite as `clojure -M:test`, on the other runtime. Worth running both:
 ;; GF(2^8) is built from bit operations, and JavaScript's bitwise operators
