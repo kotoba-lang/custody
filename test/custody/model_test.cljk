@@ -1,5 +1,5 @@
 (ns custody.model-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [custody.model :as m]
             [custody.shamir :as s]
             [custody.shamir-test :refer [det-rand]]))
